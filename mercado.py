@@ -39,6 +39,7 @@ supermercado = {
 }
 
 # Passo 1: Extract
+
 supermercado_data = []
 
 for categoria, itens in supermercado.items():
@@ -53,5 +54,21 @@ for categoria, itens in supermercado.items():
         
 # Passo 2: Transform
 #Atualizando os preços com duas casas decimais
+
 for data in supermercado_data:
     data["Preço"] = round(data["Preço"], 2)
+
+# Passo 3: Load
+#Colocando os dados em um arquivo .csv
+
+import csv
+nome_arquivo_csv = "supermercado.csv"
+
+with open(nome_arquivo_csv, mode='w', newline='') as arquivo_csv:
+    fieldnames = ["Categoria", "Item", "Preço", "Quantidade_em_Estoque"]
+    writer = csv.DictWriter(arquivo_csv, fieldnames=fieldnames)
+    
+    writer.writeheader()  # Escreve o cabeçalho
+    
+    for data in supermercado_data:
+        writer.writerow(data)
