@@ -38,3 +38,16 @@ supermercado = {
     ],
 }
 
+# Passo 1: Extract
+supermercado_data = []
+
+for categoria, itens in supermercado.items():
+    for item in itens:
+        data = {
+            "Categoria": categoria,
+            "Item": item["Item"],
+            "Preço": item["Preço"],
+            "Quantidade_em_Estoque": item["Quantidade em Estoque"],
+        }
+        supermercado_data.append(data)
+
