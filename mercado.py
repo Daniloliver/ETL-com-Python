@@ -50,4 +50,8 @@ for categoria, itens in supermercado.items():
             "Quantidade_em_Estoque": item["Quantidade em Estoque"],
         }
         supermercado_data.append(data)
-
+        
+# Passo 2: Transform
+#Atualizando os preços com duas casas decimais
+for data in supermercado_data:
+    data["Preço"] = round(data["Preço"], 2)
